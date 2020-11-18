@@ -80,7 +80,13 @@ Beaucoup de contenus proviennent ou s'inspirent d'anciens enseignants de ce cour
   - Cours sur les [structures impératives](https://sketch.sh/s/odCwxaMbe7e5NxgNAboW9e/) et sa [version statique](slides/cours-08-imperatif.md).
 
 #### Cours 9 (semaine du 9/11)
-  - Etude de cas : comment réaliser un [téléchargeur de Sketch.sh](https://github.com/letouzey/sketch-downloader/blob/master/getsketch.ml) grâce à OCaml ? Regarder ce code, et on en discute ce jeudi.
+  - Etude de cas : comment réaliser un [téléchargeur de Sketch.sh](https://github.com/letouzey/sketch-downloader/blob/master/getsketch.ml) grâce à OCaml. Code à regarder, plus d'explication dans l'enregistrement du jeudi 12/11.
+  
+#### Cours 10 (semaine du 16/11)
+  - Retour sur l'évaluation d'un programme OCaml (à savoir sa *sémantique*) :
+  - L'[ancien document de Y. Régis-Gianas](slides/2019/cours-06.pdf), avec quelques points à discuter et préciser ce jeudi.
+  - Pour les impatients, [un début d'évaluateur d'OCaml en OCaml](slides/2019/cours-06) que l'on continuera ce jeudi.
+
 
 ## Travaux pratiques (via Learn-OCaml)
 
