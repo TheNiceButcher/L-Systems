@@ -12,4 +12,6 @@ type 's system = {
     rules : 's rewrite_rules;
     interp : 's -> Turtle.command list }
 
-(** Put here any type and function interfaces concerning systems *)
+val suivant : 's word -> 's system -> 's word
+val iteration : 's system -> int -> 's word
+val afficher_chaine_symbole : string word -> unit
