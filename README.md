@@ -85,7 +85,7 @@ Beaucoup de contenus proviennent ou s'inspirent d'anciens enseignants de ce cour
 #### Cours 10 (semaine du 16/11)
   - Retour sur l'évaluation d'un programme OCaml (à savoir sa *sémantique*) :
   - L'[ancien document de Y. Régis-Gianas](slides/2019/cours-06.pdf), avec quelques points à discuter et préciser ce jeudi.
-  - Pour les impatients, [un début d'évaluateur d'OCaml en OCaml](slides/2019/cours-06) que l'on continuera ce jeudi.
+  - [Un petit évaluateur d'OCaml en OCaml](slides/cours-10).
 
 
 ## Travaux pratiques (via Learn-OCaml)
