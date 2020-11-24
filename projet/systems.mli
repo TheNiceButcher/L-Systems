@@ -15,3 +15,4 @@ type 's system = {
 val suivant : 's word -> 's system -> 's word
 val iteration : 's system -> int -> 's word
 val afficher_chaine_symbole : string word -> unit
+val afficher_commande : 's word -> 's system -> unit

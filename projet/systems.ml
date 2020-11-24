@@ -1,4 +1,5 @@
 (** Words, rewrite systems, and rewriting *)
+open Turtle
 type 's word =
   | Symb of 's
   | Seq of 's word list
@@ -37,13 +38,23 @@ let rec afficher_chaine_symbole word =
 				| [] -> print_string ""
 				| w::ll -> (afficher_chaine_symbole w);(afficher_chaine_symbole (Seq (ll)));
 				end
-	| Branch w -> print_string "[";afficher_chaine_symbole w; print_string "]";
-(*let list_command word lsyst =
-	let rec aux l =
-		match word with
-		| Symb s -> List.rev (interp x)::l
-		| Seq li -> begin match li with
-						 | [] -> List.rev l
-						 |
-		| Branch w -> let
-*)
+	| Branch w -> print_string "[";afficher_chaine_symbole w; print_string "]";;
+(*Renvoie la liste de commande à effectuer d'après la liste de symboles et
+l'Interpretation du Lsysteme en argument*)
+let rec list_command word lsyst =
+	match word with
+	| Symb s -> lsyst.interp s
+	| Seq l -> List.fold_left (fun acc m -> (acc @ (list_command m lsyst))) [] l
+	| Branch w -> [Store] @ (list_command w lsyst) @ [Restore];;
+let afficher_commande word lsyst =
+	let list_c = list_command word lsyst in
+		let rec aux l =
+			match l with
+			| [] -> ()
+			| Line a::l1 -> print_string "Line ";print_int a;aux l1
+			| Move a::l1 -> print_string "Move ";print_int a;aux l1
+			| Turn a::l1 -> print_string "Turn ";print_int a;aux l1
+			| Store::l1-> print_string "Store";aux l1
+			| Restore::l1 -> print_string "Restore";aux l1
+		in
+		aux list_c;;

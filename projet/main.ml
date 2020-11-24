@@ -25,10 +25,16 @@ let main () =
 		Branch (Seq [Symb "M";Symb "A"]);Symb "A"]
 		| q -> Symb q
 		in
-		let interp s = [Store] in
+		let interp s = match s with
+					   | "A" -> [Line 10]
+					   | "P" -> [Turn 60]
+					   | "M" -> [Turn (-60)]
+					   | _ -> failwith "Symbole introuvable"
+		in
 	{axiom;rules;interp}
 	in
-	afficher_chaine_symbole (iteration lsyst 2);
+	afficher_chaine_symbole (iteration lsyst 1);
+	afficher_commande (iteration lsyst 1) lsyst;
 	print_string "\n";
   print_string "Pour l'instant je ne fais rien\n"
 
