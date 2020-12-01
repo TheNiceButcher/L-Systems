@@ -11,14 +11,7 @@ Voir [OBJECTIFS.md](OBJECTIFS.md)
 ## Organisation du cours
 
 - Le responsable du cours est Pierre Letouzey. 
-
-- Les chargés de travaux dirigés sont:
-  - Balthazar Bauer
-  - Giovanni Bernardi
-  - Adrien Guatto
-  - Pierre Letouzey
-  - Vincent Padovani
-
+- Les chargés de TD sont Balthazar Bauer, Giovanni Bernardi, Adrien Guatto, Pierre Letouzey et Vincent Padovani.
 - Le cours est évalué par un projet et par un examen final (à confirmer).
 
 ## Inscrivez-vous !
@@ -45,47 +38,45 @@ Beaucoup de contenus proviennent ou s'inspirent d'anciens enseignants de ce cour
 
 #### Cours 1 (semaine du 9/9) :
   - Un document d'[introduction au fonctionnel et à OCaml](slides/cours-01-yann.pdf) par Yann Régis-Gianas. 
-    Très riche, privilégier l'idée générale aux détails fins pour l'instant.
-  - Un premier [tour d'horizon](slides/cours-01-tour.md) d'OCaml et sa version dynamique d'origine : [sketch](https://sketch.sh/s/H3xyXu6P3YdaHMqOVYXq6b/).
-  - En cas de souci avec sketch, copier-coller les exemples de code dans un *toplevel* OCaml, par exemple https://try.ocamlpro.com
-  - Un fichier [FAQ](faq/faq1.md) issu des sessions de questions/réponses de cette semaine.
+  - Un tour d'horizon d'OCaml : [sketch](https://sketch.sh/s/H3xyXu6P3YdaHMqOVYXq6b/) dynamique et [markdown](slides/cours-01-tour.md) statique.
+  - Quelques [questions/réponses](faq/faq1.md).
 
 #### Cours 2 (semaine du 14/9) :
-  - Les [types de données](slides/cours-02-types.md) usuels d'OCaml. Voir en particulier les *listes*, que nous utiliserons abondamment.
-  - Le [sketch](https://sketch.sh/s/RjxDVUFPNMiZqKxDtzdezN/) dynamique d'origine.
-  - Le code OCaml montré pendant les séances questions/réponses de cette semaine, avec quelques commentaires : [fichier OCaml](faq/faq2.ml) ou [sketch](https://sketch.sh/s/nhihzKwLxmobjB0TDbEeKk/). Captures vidéo par [BBB](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) ou en [webm](https://www.irif.fr/~letouzey/pf5/videos).
+  - Les **types de données** usuels d'OCaml : [sketch](https://sketch.sh/s/RjxDVUFPNMiZqKxDtzdezN/), [markdown](slides/cours-02-types.md).
+  - Questions/réponses : [sketch](https://sketch.sh/s/nhihzKwLxmobjB0TDbEeKk/), [fichier OCaml](faq/faq2.ml), vidéo [BBB](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) et [webm](https://www.irif.fr/~letouzey/pf5/videos)
 
 #### Cours 3 (semaine du 21/9) :
-  - [Outils](slides/cours-03-outils.md) pour utiliser OCaml sur sa machine et aller vers des programmes complets.
-  - Cette fois-ci, les séances visioconf ont plutôt été des démos de ces outils. Captures vidéo par [BBB](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) ou en [webm](https://www.irif.fr/~letouzey/pf5/videos).
+  - **Outils OCaml** (compilateurs, etc) : [markdown](slides/cours-03-outils.md) et démo vidéo [BBB](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) et [webm](https://www.irif.fr/~letouzey/pf5/videos).
 
 #### Cours 4 (semaine du 28/9)
-  - Un fichier [faq3.md](faq/faq3.md) avec quelques faux-amis du débutant OCaml. Attention aux erreurs classiques...
-  - Le cours sur les [fonctions](slides/cours-04-fun.md) de première classe et la programmation d'ordre supérieur.
-  - Les sketchs correspondants : [sketch4a](https://sketch.sh/s/XjV2RE6tIUAJkvdfQ1rgFN/) et [sketch4b](https://sketch.sh/s/tDqsDWq7jwLNCLPX3mzky7/)
-  - Sketchs des séances questions/réponses du [30/9](https://sketch.sh/s/iHoll1bLeBUb3LCn5Hw22U/) et du [1/10](https://sketch.sh/s/JFcq7Uv7yfl5BtcobMwcWe/). Captures vidéo par [BBB](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) ou en [webm](https://www.irif.fr/~letouzey/pf5/videos).
+  - **Fonctions de 1ère classe et programmation d'ordre supérieur** : [sketch4a](https://sketch.sh/s/XjV2RE6tIUAJkvdfQ1rgFN/), [sketch4b](https://sketch.sh/s/tDqsDWq7jwLNCLPX3mzky7/), [markdown](slides/cours-04-fun.md).
+  - Questions/réponses du [30/9](https://sketch.sh/s/iHoll1bLeBUb3LCn5Hw22U/) et du [1/10](https://sketch.sh/s/JFcq7Uv7yfl5BtcobMwcWe/) et les [liens](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) [videos](https://www.irif.fr/~letouzey/pf5/videos) habituels.
+  - Une [FAQ](faq/faq3.md) de plus avec quelques faux-amis du débutant OCaml. Attention aux erreurs classiques...
 
 #### Cours 5 (semaine du 5/10)
-  - Le cours sur la [récursivité terminale](https://sketch.sh/s/6k9ft6DS3nA6xQjVNa4v1g/). Sa [version statique](slides/cours-05-tailrec.md).
-  - Sketchs des séances du [7/10](https://sketch.sh/s/PFfSXHi1Swq166PNO4W7lK/) et [8/10](https://sketch.sh/s/xqq4NfSAyoChnDhjTGemTS/) (exercices sur la récursivité terminale). Captures vidéo par [BBB](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) ou en [webm](https://www.irif.fr/~letouzey/pf5/videos).
+  - **Récursivité terminale** : [sketch](https://sketch.sh/s/6k9ft6DS3nA6xQjVNa4v1g/), [markdown](slides/cours-05-tailrec.md).
+  - Questions/réponses du [7/10](https://sketch.sh/s/PFfSXHi1Swq166PNO4W7lK/) et [8/10](https://sketch.sh/s/xqq4NfSAyoChnDhjTGemTS/) et [liens](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) [videos](https://www.irif.fr/~letouzey/pf5/videos).
 
 #### Cours 6 (semaine du 12/10)
-  - Cours sur le [type option et les exceptions](https://sketch.sh/s/LNYzzbJLVpKgRIEYW5l2pM/). Sa [version statique](slides/cours-06-exn.md).
-  - Sketchs des séances du [14/10](https://sketch.sh/s/pmgQm3hZcaHFMIEZuuNEZT/) et [15/10](https://sketch.sh/s/ntcctHLxV6FYVAXN4epFaL/). Captures vidéo par [BBB](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) ou en [webm](https://www.irif.fr/~letouzey/pf5/videos).
+  - **Type option et exceptions** : [sketch](https://sketch.sh/s/LNYzzbJLVpKgRIEYW5l2pM/), [markdown](slides/cours-06-exn.md).
+  - Questions/réponses du [14/10](https://sketch.sh/s/pmgQm3hZcaHFMIEZuuNEZT/) et [15/10](https://sketch.sh/s/ntcctHLxV6FYVAXN4epFaL/) et [liens](https://bbb-front.math.univ-paris-diderot.fr/recherche/pie-rcp-d5b-tvw) [videos](https://www.irif.fr/~letouzey/pf5/videos).
 
 #### Cours 7 (semaine du 19/10)
-  - Cours sur les [entrées/sorties](slides/cours-07a-io.md) et le [graphisme](slides/cours-07b-graphics.md). Le [pdf](slides/cours-07-io-graphics.pdf) donné à l'origine. Auteur initial de ce cours : R. Treinen.
+  - **Entrées/sorties et graphisme** : [markdown7a](slides/cours-07a-io.md), [markdown7b](slides/cours-07b-graphics.md), [pdf](slides/cours-07-io-graphics.pdf) d'origine. Auteur initial de ce cours : R. Treinen. Videos: endroit usuel.
 
 #### Cours 8 (semaine du 2/11)
-  - Cours sur les [structures impératives](https://sketch.sh/s/odCwxaMbe7e5NxgNAboW9e/) et sa [version statique](slides/cours-08-imperatif.md).
+  - **Structures impératives** : [sketch](https://sketch.sh/s/odCwxaMbe7e5NxgNAboW9e/), [markdown](slides/cours-08-imperatif.md).
+  - Questions/réponses : [sketch](https://sketch.sh/s/eXCDqJMy5xpRRRVoSKbRuP/) du 5/11 (resté dans l'état brut). Vidéos: endroit usuel.
 
 #### Cours 9 (semaine du 9/11)
-  - Etude de cas : comment réaliser un [téléchargeur de Sketch.sh](https://github.com/letouzey/sketch-downloader/blob/master/getsketch.ml) grâce à OCaml. Code à regarder, plus d'explication dans l'enregistrement du jeudi 12/11.
+  - **Etude de cas** : comment réaliser un [téléchargeur de Sketch.sh](https://github.com/letouzey/sketch-downloader/blob/master/getsketch.ml) grâce à OCaml. Code à regarder, plus d'explication dans la video du jeudi 12/11.
   
 #### Cours 10 (semaine du 16/11)
-  - Retour sur l'évaluation d'un programme OCaml (à savoir sa *sémantique*) :
-  - L'[ancien document de Y. Régis-Gianas](slides/2019/cours-06.pdf), avec quelques points à discuter et préciser ce jeudi.
-  - [Un petit évaluateur d'OCaml en OCaml](slides/cours-10).
+  - Retour sur **l'évaluation** d'un programme OCaml (à savoir sa *sémantique*) : [pdf](slides/2019/cours-06.pdf) 2019 plus quelques [remarques](slides/cours-10-eval.md) complémentaires (grosso modo vues pendant la séance du jeudi).
+  - Un petit [évaluateur d'OCaml en OCaml](slides/cours-10).
+
+#### Cours 11 (semaine du 23/11)
+  - Retour sur le **typage** en OCaml : [markdown](slides/cours-11-typage.md) de cours et [exemples](slides/cours-11-typage.ml) vus en séance.
 
 
 ## Travaux pratiques (via Learn-OCaml)
@@ -131,6 +122,8 @@ Quelques liens:
 
 - [examen 2018/2019](exams/examen1819.pdf) écrit par Michele Pagani.
   Le [sketch](https://sketch.sh/s/dgfrHHkNzdUuf3VYTRO3Vy/) de correction.
+
+- [examen 2019/2020](exams/examen1920.pdf) par Y. Regis-Gianas.
 
 ## Références et bibliographie
 

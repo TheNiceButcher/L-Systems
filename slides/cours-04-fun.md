@@ -479,7 +479,7 @@ concernant la programmation *récursive terminale* (dont nous parlerons la semai
 let rec fact_aux (continuation : int -> int) n =
   if n = 0 then continuation 1 else fact_aux (fun v -> continuation (v * n)) (n - 1)
   
-let fact n = fact_aux (fun x -> x)
+let fact n = fact_aux (fun x -> x) n
 ```
 
 Comment lire cette drôle de version de `fact`? 
@@ -492,7 +492,7 @@ Dans le cas récursif, on doit mettre à jour la continuation puisqu'après l'ap
 
 La fonction `fact` se contente de passer à `fact_aux` une continuation qui représente le fait de renvoyer immédiatement son argument.
 
-Pour mieux comprendre ce qui se passe, essayons de réprésenter une trace d'exécution pour le calcul `fact 2`:
+Pour mieux comprendre ce qui se passe, essayons de représenter une trace d'exécution pour le calcul `fact 2`:
 
 ```
 fact 2 =

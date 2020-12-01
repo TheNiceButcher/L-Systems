@@ -48,12 +48,16 @@ https://ocaml.org/docs/install.html#OPAM  puis lancer
 L'outil `dune` est très commode pour superviser la compilation d'un programme OCaml. 
 Sur Debian Buster, normalement `sudo apt install dune`. Sur Ubuntu 20.04 ce paquet
 s'appelle maintenant `ocaml-dune`, et il n'est malheureusement pas fourni par Ubuntu
-18.04. Dans ce cas, et sur les autres systèmes, faire `opam install dune` après avoir
+18.04. Dans ce cas, et sur les autres systèmes, faire `opam install dune ocamlfind` après avoir
 installé et configuré [opam](https://ocaml.org/docs/install.html#OPAM).
 
 Remarque : sur Ubuntu 18.04, même `opam` commence à dater, mieux vaut éviter la version 1
 qui n'est plus maintenue. Voir les [conseils suivants](https://opam.ocaml.org/doc/Install.html#Ubuntu)
 pour installer `opam` depuis un "PPA" plutôt que la version d'origine du système.
+
+Attention : Ubuntu 18.04 fournit un paquet nommé `whitedune` qui n'a **rien à voir**
+avec OCaml et ce projet. Mieux vaut le **désinstaller** si vous l'avez installé par
+erreur, pour éviter toute confusion.
 
 ## Editeur de code
 
