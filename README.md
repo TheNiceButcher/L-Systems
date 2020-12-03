@@ -78,6 +78,10 @@ Beaucoup de contenus proviennent ou s'inspirent d'anciens enseignants de ce cour
 #### Cours 11 (semaine du 23/11)
   - Retour sur le **typage** en OCaml : [markdown](slides/cours-11-typage.md) de cours et [exemples](slides/cours-11-typage.ml) vus en séance.
 
+#### Cours 12 (semaine du 30/11)
+  - Quelques mots sur modules et signatures : [markdown](slides/cours-12-modules.md). Ceci ne sera pas au programme de l'examen, mais peut vous servir en projet.
+  - On fera jeudi quelques exercices pris dans les annales d'examen, cf la section ci-dessous.
+
 
 ## Travaux pratiques (via Learn-OCaml)
 
