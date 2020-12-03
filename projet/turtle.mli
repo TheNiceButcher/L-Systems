@@ -13,5 +13,13 @@ type position = {
   y: float;        (** position y *)
   a: int;          (** angle of the direction *)
 }
-
-(** Put here any type and function signatures concerning turtle *)
+(*Type turtle qui regroupe les commandes à executer et une liste de position,
+qui stocke la position courante en tête et les positions lors d'une commande
+ Store*)
+type turtle =
+{
+	cmds: command list;
+	pos: position list;
+}
+val create_turtle: command list -> position list -> turtle
+val exec_turtle: turtle -> unit
