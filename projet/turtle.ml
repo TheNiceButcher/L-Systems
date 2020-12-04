@@ -40,7 +40,7 @@ let int_int_of_float_float (x,y) =
 let deg_to_radian n =
  	let a = n mod 360 in
 		let a' =
-			if(a < 0) then (float_of_int a) +. 180.
+			if(a < 0) then (float_of_int a) +. 360.
 			else float_of_int a in
 		a' /. 180. *. 3.14
 
