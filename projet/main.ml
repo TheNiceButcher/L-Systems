@@ -22,6 +22,8 @@ let extra_arg_action = fun s -> failwith ("Argument inconnu :"^s)
 
 let main () =
   Arg.parse cmdline_options extra_arg_action usage;
+  let str = read_line() in
+  print_string str;
 	let current = (iteration snow 1) in
   	open_graph " 800x800";
 	afficher_commande current snow;

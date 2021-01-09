@@ -34,10 +34,11 @@ let iteration lsyst i =
 let rec afficher_chaine_symbole word =
 	match word with
 	| Symb s -> print_string s
-	| Seq l -> begin match l with
-				| [] -> print_string ""
-				| w::ll -> (afficher_chaine_symbole w);(afficher_chaine_symbole (Seq (ll)));
-				end
+	| Seq l ->
+		begin match l with
+			| [] -> print_string ""
+			| w::ll -> (afficher_chaine_symbole w);(afficher_chaine_symbole (Seq (ll)));
+			end
 	| Branch w -> print_string "[";afficher_chaine_symbole w; print_string "]";;
 (*Renvoie la liste de commande à effectuer d'après la liste de symboles et
 l'Interpretation du Lsysteme en argument*)
