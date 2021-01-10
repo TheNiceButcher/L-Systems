@@ -62,10 +62,12 @@ let from_string_to_word s =
  		| Some b -> failwith "A faire"
 
 let from_string_to_command s =
+	if (String.length s < 2)
+	then failwith "Pourquoi";
 	match (String.get s 0) with
-	| 'T' -> Turn (int_of_string (String.sub s 1 (String.length s)))
-	| 'L' -> Line (int_of_string (String.sub s 1 (String.length s)))
-	| 'M' -> Move (int_of_string (String.sub s 1 (String.length s)))
+	| 'T' -> Turn (int_of_string (String.sub s 1 ((String.length s) -1)))
+	| 'L' -> Line (int_of_string (String.sub s 1 ((String.length s) -1)))
+	| 'M' -> Move (int_of_string (String.sub s 1 ((String.length s) -1)))
 	| _ -> failwith "Interpretation invalide"
 (* Ouvre un fichier et cree un Lsystem correspondant *)
 let from_fich_to_syst namefile =
@@ -91,5 +93,5 @@ let from_fich_to_syst namefile =
 			);
 			interp =
 			(fun x ->
-				[from_string_to_command (List.assoc x i_n)])
+				[from_string_to_command (List.assoc x i_n)]);
 		}

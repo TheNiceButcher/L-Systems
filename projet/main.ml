@@ -4,6 +4,7 @@ open Systems (* Par exemple *)
 open Turtle
 open Graphics
 open Examples
+open Read_files
 
 (** Gestion des arguments de la ligne de commande.
     Nous suggérons l'utilisation du module Arg
@@ -22,16 +23,16 @@ let extra_arg_action = fun s -> failwith ("Argument inconnu :"^s)
 
 let main () =
   Arg.parse cmdline_options extra_arg_action usage;
+  print_string "Bienvenue. Marquez le nom du fichier que vous voulez ouvrir\n";
   let str = read_line() in
-  print_string str;
-	let current = (iteration snow 1) in
-  	open_graph " 800x800";
-	afficher_commande current snow;
-	let list = list_command current snow in
+	let snow_sys = from_fich_to_syst str in
+	open_graph " 800x800";
 	moveto 400 400;
-	exec_turtle (create_turtle list [{x=400.;y=400.;a=0}]);
+	let a_n = iteration_bis 0 snow_sys
+	in
+	let _ = exec_bis a_n [{x=400.;y=400.;a=0}] snow_sys in
 	Unix.sleep 10;
-	close_graph();;
+	clear_graph();;
 
 (** On ne lance ce main que dans le cas d'un programme autonome
     (c'est-à-dire que l'on est pas dans un "toplevel" ocaml interactif).

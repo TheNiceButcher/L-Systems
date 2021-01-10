@@ -79,8 +79,11 @@ let rec exec_turtle turtle =
 						exec_turtle (create_turtle l'
 						((pos_to_t_pos new_pos pos.a)::(List.tl turtle.pos)));
 			| Turn a ->
-				exec_turtle (create_turtle l' ((pos_to_t_pos pos_int (pos.a + a))::(List.tl turtle.pos)));
+				exec_turtle (create_turtle l'
+				((pos_to_t_pos pos_int (pos.a + a))::(List.tl turtle.pos)));
 			| Store ->
-				exec_turtle (create_turtle l' ((pos_to_t_pos pos_int pos.a)::turtle.pos));
+				exec_turtle (create_turtle l'
+				((pos_to_t_pos pos_int pos.a)::turtle.pos));
 			| Restore ->
 				exec_turtle (create_turtle l' (List.tl turtle.pos));
+			;;

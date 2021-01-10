@@ -23,3 +23,8 @@ type turtle =
 }
 val create_turtle: command list -> position list -> turtle
 val exec_turtle: turtle -> unit
+val pos_to_t_pos : float * float -> int -> position
+val int_int_of_float_float : float * float -> int * int
+val deg_to_radian : int -> float
+val t_pos_to_pos : position -> int -> float * float
+val line_or_move : command -> int -> int -> unit 

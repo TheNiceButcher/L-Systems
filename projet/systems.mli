@@ -1,5 +1,4 @@
 (** Words, rewrite systems, and rewriting *)
-open Turtle
 type 's word =
   | Symb of 's
   | Seq of 's word list
@@ -11,9 +10,15 @@ type 's system = {
     axiom : 's word;
     rules : 's rewrite_rules;
     interp : 's -> Turtle.command list }
-
+(*Type arbre representant l'arbre *)
+type 's foret =
+	| Foret of 's arbre list
+and 's arbre =
+	| Node of 's foret * 's
 val suivant : 's word -> 's system -> 's word
 val iteration : 's system -> int -> 's word
-val afficher_chaine_symbole : string word -> unit
-val afficher_commande : 's word -> 's system -> unit
-val list_command: 's word -> 's system -> command list
+(*val list_command: 's word -> 's system -> command list*)
+val next_bis : string system -> string arbre -> string arbre
+val arbre_ax : string system -> string arbre
+val exec_bis : string arbre -> Turtle.position list -> string system -> Turtle.position list
+val iteration_bis : int -> string system -> string arbre 
