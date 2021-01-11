@@ -44,22 +44,8 @@ let open_file namefile =
 		then failwith "Fichier invalide"
 		else
 			ax,regle,inter
-(*Renvoie un couple de liste renseignant respectivement les index de '[' et de ']'
-dans la chaine en argument*)
-let list_index_b s =
-	let len_s = String.length s in
-		let rec loop acc1 acc2 i n =
-			if (i = n) then List.rev acc1, List.rev acc2
-			else if (String.get s i = '[')
-			then loop (i::acc1) acc2 (i+1) n
-			else if (String.get s i = ']')
-			then loop acc1 (i::acc2) (i+1) n
-			else
-				loop acc1 acc2 (i+1) n
-		in loop [] [] 0 len_s
-
 (*Convertit une chaine de caractere en une instance de word*)
-let from_string_to_word s =
+let rec from_string_to_word s =
 	if (String.length s = 1)
 	then Symb s
 	else
@@ -75,14 +61,38 @@ let from_string_to_word s =
 					loop (new_symb::acc) (i+1) n
 			in Seq (loop [] 0 (String.length s))
 		(*Au moins une branche*)
- 		| Some b ->
-			let l_i1,l_i2 = list_index_b s in
-			(*Si nous n'avons pas un meme nombre de [ et de ], alors on renvoie une erreur*)
-				if (List.length l_i2 <> List.length l_i1)
+ 		| Some b1 ->
+			let b2 = String.rindex s ']' in
+			let len = String.length s in
+				if (b1 = 0 && b2 = len - 1)
 				then
-					failwith "Branche invalide"
+					Branch (from_string_to_word (String.sub s 1 (b2-1)))
+				else if (b1 <> 0 && b2 <> len - 1)
+				then
+					let w1 = (from_string_to_word (String.sub s 0 (b1))) in
+					let w2 = (from_string_to_word (String.sub s b1 (b2 - b1 + 1))) in
+					let w3 = (from_string_to_word (String.sub s (b2+1) (len - b2 -1))) in
+					match w1,w3 with
+					| Symb _, Symb _ -> Seq [w1;w2;w3]
+					| Symb _, Seq l -> Seq ([w1;w2] @ l)
+					| Seq l, Symb _ -> Seq (l @ [w2;w3])
+					| Seq l1,Seq l2 -> Seq (l1 @ (w2::l2))
+					| _,_ -> failwith "Impossible"
+				else if (b1 = 0)
+				then
+					let w1 = (from_string_to_word (String.sub s 0 (b2+1))) in
+					let w2 = (from_string_to_word (String.sub s (b2 + 1) (len - b2 - 1))) in
+					match w2 with
+					| Symb _ -> Seq [w1;w2]
+					| Seq l -> Seq (w1::l)
+					| _ -> failwith "Impossible"
 				else
-					failwith "A faire"
+					let w1 = (from_string_to_word (String.sub s 0 (b1))) in
+					let w2 = (from_string_to_word (String.sub s (b1) (len - b1))) in
+					match w1 with
+					| Symb _ -> Seq [w1;w2]
+					| Seq l -> Seq (l @ [w2])
+					| _ -> failwith "Impossible"
 (*Renvoie la commande correspondante a la chaine de caractere s*)
 let from_string_to_command s =
 	if (String.length s < 2)
