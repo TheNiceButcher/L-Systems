@@ -42,7 +42,7 @@ let deg_to_radian n =
 		let a' =
 			if(a < 0) then (float_of_int a) +. 360.
 			else float_of_int a in
-		a' /. 180. *. 3.14
+		a' /. 180. *. 3.1415927
 
 (*Retranscrit la position indiqué par le type position dans la position "reelle"*)
 let t_pos_to_pos pos n =

@@ -44,6 +44,18 @@ let open_file namefile =
 		then failwith "Fichier invalide"
 		else
 			ax,regle,inter
+let list_index_b s =
+	let len_s = String.length s in
+		let rec loop acc1 acc2 i n =
+			if (i = n) then List.rev acc1, List.rev acc2
+			else if (String.get s i = '[')
+			then loop (i::acc1) acc2 (i+1) n
+			else if (String.get s i = ']')
+			then loop acc1 (i::acc2) (i+1) n
+			else
+				loop acc1 acc2 (i+1) n
+		in loop [] [] 0 len_s
+
 (*Convertit une chaine de caractere en une instance de word*)
 let from_string_to_word s =
 	if (String.length s = 1)
@@ -52,6 +64,7 @@ let from_string_to_word s =
 		(*On verifie si la séquence a des branches *)
 		let index_b = String.index_opt s '[' in
  		match index_b with
+		(*Aucune branche *)
  		| None ->
 			let rec loop acc i n =
 			if (i = n) then List.rev acc
@@ -59,8 +72,15 @@ let from_string_to_word s =
 				let new_symb = Symb (Char.escaped (String.get s i)) in
 					loop (new_symb::acc) (i+1) n
 			in Seq (loop [] 0 (String.length s))
- 		| Some b -> failwith "A faire"
-
+		(*Au moins une branche*)
+ 		| Some b ->
+			let l_i1,l_i2 = list_index_b s in
+				if (List.length l_i2 <> List.length l_i1)
+				then
+					failwith "Branche invalide"
+				else
+					failwith "A faire"
+(*Renvoie la commande correspondante a la chaine de caractere s*)
 let from_string_to_command s =
 	if (String.length s < 2)
 	then failwith "Pourquoi";
