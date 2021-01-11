@@ -44,6 +44,8 @@ let open_file namefile =
 		then failwith "Fichier invalide"
 		else
 			ax,regle,inter
+(*Renvoie un couple de liste renseignant respectivement les index de '[' et de ']'
+dans la chaine en argument*)
 let list_index_b s =
 	let len_s = String.length s in
 		let rec loop acc1 acc2 i n =
@@ -75,6 +77,7 @@ let from_string_to_word s =
 		(*Au moins une branche*)
  		| Some b ->
 			let l_i1,l_i2 = list_index_b s in
+			(*Si nous n'avons pas un meme nombre de [ et de ], alors on renvoie une erreur*)
 				if (List.length l_i2 <> List.length l_i1)
 				then
 					failwith "Branche invalide"
