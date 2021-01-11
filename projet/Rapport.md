@@ -5,6 +5,10 @@ L'équipe pour ce projet est constituée de:
 
 ### Fonctionnalités
 Les fonctionnalités implémentées sont les suivantes :
+- Lecture d'un L-Systeme via un fichier
+- Lecture d'un L-Systeme via l'invite de commande
+- Interprétation à la volée
+- 
 
 ### Compilation
 La compilation s'effectue via la commande `make` et l'exécution est lancée avec la commande `./run`.
@@ -23,5 +27,5 @@ Le projet contient de nombreux modules dont nous allons vous préciser l'utilit�
  En ce qui concerne la chronologie du travail sur ce projet, on peut mettre en évidence 2 phases :
  - Le mois de novembre et début décembre
  - Début janvier.
- Le "reconfinement" de novembre nous a permis de découvrir le sujet et de nous familiariser avec les L-systèmes, les tortues et autres concepts explorés dans ce projet.
- Puis, après un mois de décembre rempli de révisions pour les examens, de Devoir Maison à rendre ou encore de projets à rendre, on s'est remis au travail au début du mois de janvier, une fois ces tempêtes passées. On a pu alors s'attaquer à la lecture des fichiers, afin de récupérer les L-Systèmes de l'utilisateur et d'interpréter à la volée les L-Systèmes.  
+Le "reconfinement" de novembre nous a permis de découvrir le sujet et de nous familiariser avec les L-systèmes, les tortues et autres concepts explorés dans ce projet.
+Puis, après un mois de décembre rempli de révisions pour les examens, de Devoir Maison à rendre ou encore de projets à rendre, on s'est remis au travail au début du mois de janvier, une fois ces tempêtes passées. On a pu alors s'attaquer à la lecture des fichiers, afin de récupérer les L-Systèmes de l'utilisateur et d'interpréter à la volée les L-Systèmes.  
