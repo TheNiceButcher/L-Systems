@@ -8,16 +8,18 @@ Les fonctionnalités implémentées sont les suivantes :
 - Lecture d'un L-Systeme via un fichier
 - Lecture d'un L-Systeme via l'invite de commande
 - Interprétation à la volée
--
 
 ### Compilation
-La compilation s'effectue via la commande `make` et l'exécution est lancée avec la commande `./run`.
+La compilation s'effectue via la commande `make` et l'exécution est lancée avec la commande `./run` sans argument.
+Au moment de l'exécution, le programme vous demandera via quel moyen souhaitez-vous lui fournir le L-Système.
+Vous aurez alors le choix d'importer votre L-Système via un fichier ou via l'invite de commande.
 
 ### Découpage modulaire
 Le projet contient de nombreux modules dont nous allons vous préciser l'utilité:
 - `Turtle` : module gérant les commandes et les positions dans les L-systèmes.
 - `Systems` : module gérant les L-systèmes, en général, faisant appel à `Turtle`, pour tout ce qui est commande et position.
 - `Read_files` : module permettant de récupérer d'un fichier des informations pour créer un nouveau L-système. Ce module est bien évidemment indispensable, pour pouvoir créer un L-système à partir d'un fichier.
+- `Read_terminal` : module gérant la relation du programme avec le terminal, à savoir la récupération du nom du fichier ou du L-Système et l'action voulue par l'utilisateur sur le L-Système courant. Ce module est nécessaire pour pouvoir récupérer et interpréter les actions voulues par l'utilisateur.
 
 ### Répartition du travail
 
