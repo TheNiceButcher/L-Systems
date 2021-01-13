@@ -1,6 +1,7 @@
 (*Gere la lecture et la mise en "L-systeme" d'un fichier au format sys*)
 open Systems
 open Turtle
+exception Interpretation_Invalide
 (*Fonction qui indique si on doit prendre en compte la ligne en argument ou
 non, c'est-à-dire si ce n'est pas un commentaire ou une ligne de demarquation
 entre l'axiome, les regles et l'interprétation'*)
@@ -120,9 +121,9 @@ let from_string_to_command s =
 	| 'T' -> Turn (int_of_string (String.sub s 1 ((String.length s) -1)))
 	| 'L' -> Line (int_of_string (String.sub s 1 ((String.length s) -1)))
 	| 'M' -> Move (int_of_string (String.sub s 1 ((String.length s) -1)))
-	| _ -> failwith "Interpretation invalide"
-(* Ouvre un fichier et cree un Lsystem correspondant *)
+	| _ -> raise Interpretation_Invalide
 let from_fich_to_syst namefile =
+	(*On recupere l'axiome, la liste des regles et la liste des interpretations*)
 	let ax,regle,inter = open_file namefile in
 		let axiom = from_string_to_word ax
 		in
@@ -145,5 +146,9 @@ let from_fich_to_syst namefile =
 			);
 			interp =
 			(fun x ->
-				[from_string_to_command (List.assoc x i_n)]);
+				try
+				[from_string_to_command (List.assoc x i_n)]
+				with
+				| Interpretation_Invalide | Not_found ->
+								failwith ("Interpretation_Invalide"));
 		}

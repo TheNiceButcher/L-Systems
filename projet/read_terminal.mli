@@ -7,6 +7,10 @@ Avancer -> Avancer d'une iteration
 Reculer -> Reculer d'une iteration
 ZoomAvant -> Agrandir la representation du L-système
 ZoomArriere -> Réduit la taille de la representation du L-système
+DecaleGauche -> Decale l'image vers la gauche
+DecaleDroite -> Decale l'image vers la droite
+DecaleHaut -> Decale l'image vers le haut
+DecaleBas -> Decale l'image vers le bas
 Quitter -> Quitte le programme *)
 type action =
 	| Avancer | Reculer | ZoomAvant | ZoomArriere

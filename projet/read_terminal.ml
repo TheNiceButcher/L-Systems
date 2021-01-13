@@ -1,6 +1,16 @@
 open Read_files
 open Turtle
 open Graphics
+(*Type indiquant le choix de l'utilisateur par rapport au L-systeme courant :
+Avancer -> Avancer d'une iteration
+Reculer -> Reculer d'une iteration
+ZoomAvant -> Agrandir la representation du L-système
+ZoomArriere -> Réduit la taille de la representation du L-système
+DecaleGauche -> Decale l'image vers la gauche
+DecaleDroite -> Decale l'image vers la droite
+DecaleHaut -> Decale l'image vers le haut
+DecaleBas -> Decale l'image vers le bas
+Quitter -> Quitte le programme *)
 type action =
 	| Avancer | Reculer | ZoomAvant | ZoomArriere
 	| Quitter | DecaleGauche | DecaleDroite | DecaleHaut | DecaleBas;;
@@ -20,12 +30,14 @@ let creation_fich ax ru inter =
 	let fich = open_out ".creation_fich" in
 		output_string fich ax;
 		output_string fich "\n\n";
+		(*Boucle qui ecrit la liste des regles et des interprétation dans le
+		fichier avec un retour chariot entre chacun*)
 		let rec loop l =
-		match l with
-		| [] -> output_string fich "\n";
-		| r::l' -> output_string fich r; output_string fich "\n"; loop l'
-		in
-		loop ru;
+			match l with
+			| [] -> output_string fich "\n";
+			| r::l' -> output_string fich r; output_string fich "\n"; loop l'
+			in
+			loop ru;
 		loop inter;
 		close_out fich;;
 (*Recupere un Lsyteme donne par l'utilisateur via la ligne de commande
@@ -36,6 +48,8 @@ let rec recuperer_syst_read () =
 	print_string "Donnez les regles du Lsystems (tapez '-1' quand vous avez fini)\n";
 	print_string "Elles doivent etre sous la forme :\n";
 	print_string "'s w où s est le symbole dont w est la substitution de s\n";
+	(* Boucle pour recuperer soit la liste des régles ou des interprétations
+	qui s'arrete dès qu'on tape -1 *)
 	let rec loop i acc =
 		if (i = (-1)) then List.rev acc
 		else
@@ -56,20 +70,25 @@ let rec recuperer_syst_read () =
 	print_string "s cmd ou s est le symbole que vous souhaitez a cmd, qui peut être :\n";
 	print_string "Tn pour Turn n,Mn pour Move n ou Ln pour Turn n avec n entier\n";
 	let inter = loop 0 [] in
+	(*Une fois l'axiome, les regles et les interpretations recuperes, on les copie
+	dans le fichier ".creation_fich" puis on appelle from_fich_to_syst pour
+	obtenir le Lsysteme correspondant *)
 		creation_fich ax ru inter;
 		try
 		from_fich_to_syst ".creation_fich"
-		with Failure _ ->
+		with Failure _ | Interpretation_Invalide ->
 		begin
-		print_string "Vous avez donne un Lsysteme invalide\nVeuillez recommencer";
+		print_string "Vous avez donne un Lsysteme invalide\nVeuillez recommencer\n";
 		recuperer_syst_read()
 		end;;
 
 
-(*Récupere la touche presse par l'utilisateur, avec en argument la dernière position.
-Si cette touche est different de 'a', 'r', 'q' '-' ou '+', on rappelle la fonction jusqu'a
-que l'une de ses touches soit tapee par l'utilisateur. Sinon on envoie l'action
-representant ce que veut l'utilisateur*)
+(*Récupere la touche presse par l'utilisateur, avec en argument la dernière
+position.
+Si cette touche est different de 'a', 'r', 'q', '-' , '+', 'g','d', 'b' ou 'h'.
+On rappelle la fonction jusqu'a que l'une de ses touches soit tapee
+par l'utilisateur. Sinon on envoie l'action representant ce que veut
+l'utilisateur*)
 let rec recuperer_touche_utilisateur pos =
 	let pos_int = int_int_of_float_float (t_pos_to_pos pos 0) in
 	moveto 0 100;
@@ -77,19 +96,22 @@ let rec recuperer_touche_utilisateur pos =
 	" Q pour quitter la fenetre et le programme, ou" in
 	draw_string s;
 	moveto 0 80;
-	draw_string "+/- pour agrandir/reduire l'image\n";
+	draw_string "+/- pour agrandir/reduire l'image ou ";
+	moveto 0 60;
+	draw_string ("B pour la descendre, H pour la monter," ^
+	"G pour la decaler a gauche ou D pour la decaler a droite");
 	let e = wait_next_event [Key_pressed] in
 	moveto (fst pos_int) (snd pos_int);
 	match e.key with
 	| 'A' | 'a' -> Avancer
 	| 'R' | 'r' -> Reculer
 	| 'Q' | 'q' -> Quitter
-	| '+' -> ZoomAvant
+	| '+'  -> ZoomAvant
 	| '-' -> ZoomArriere
-	| '4' -> DecaleGauche
-	| '6' -> DecaleDroite
-	| '8' -> DecaleHaut
-	| '2' -> DecaleBas
+	| 'G' | 'g' -> DecaleGauche
+	| 'D' | 'd' -> DecaleDroite
+	| 'H' | 'h' -> DecaleHaut
+	| 'B' | 'b' -> DecaleBas
 	| _ -> recuperer_touche_utilisateur pos;;
 (*Affiche le menu pour choisir entre les differentes options pour recuperer le
 système, à savoir soit via un fichier, soit via l'invite de commandes*)
