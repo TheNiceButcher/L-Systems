@@ -9,6 +9,7 @@ ZoomAvant -> Agrandir la representation du L-système
 ZoomArriere -> Réduit la taille de la representation du L-système
 Quitter -> Quitte le programme *)
 type action =
-	Avancer | Reculer | ZoomAvant | ZoomArriere | Quitter;;
+	| Avancer | Reculer | ZoomAvant | ZoomArriere
+	| Quitter | DecaleGauche | DecaleDroite | DecaleHaut | DecaleBas;;
 val recuperer_touche_utilisateur : position -> action
 val menu_bienvenue : unit -> string system

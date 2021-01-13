@@ -2,7 +2,8 @@ open Read_files
 open Turtle
 open Graphics
 type action =
-	Avancer | Reculer | ZoomAvant | ZoomArriere | Quitter;;
+	| Avancer | Reculer | ZoomAvant | ZoomArriere
+	| Quitter | DecaleGauche | DecaleDroite | DecaleHaut | DecaleBas;;
 (*Demande le nom du fichier que l'utilisateur souhaite ouvrir et renvoie le
 Lsysteme correspondant*)
 let rec recup_syst_fich () =
@@ -71,10 +72,12 @@ que l'une de ses touches soit tapee par l'utilisateur. Sinon on envoie l'action
 representant ce que veut l'utilisateur*)
 let rec recuperer_touche_utilisateur pos =
 	let pos_int = int_int_of_float_float (t_pos_to_pos pos 0) in
-	moveto 100 100;
-	let s = "Appuyez sur A pour avancer d'une iteration,  R pour reculer et" ^
-	" Q pour quitter la fenetre et le programme" in
+	moveto 0 100;
+	let s = "Appuyez sur A pour avancer d'une iteration,  R pour reculer," ^
+	" Q pour quitter la fenetre et le programme, ou" in
 	draw_string s;
+	moveto 0 80;
+	draw_string "+/- pour agrandir/reduire l'image\n";
 	let e = wait_next_event [Key_pressed] in
 	moveto (fst pos_int) (snd pos_int);
 	match e.key with
@@ -83,6 +86,10 @@ let rec recuperer_touche_utilisateur pos =
 	| 'Q' | 'q' -> Quitter
 	| '+' -> ZoomAvant
 	| '-' -> ZoomArriere
+	| '4' -> DecaleGauche
+	| '6' -> DecaleDroite
+	| '8' -> DecaleHaut
+	| '2' -> DecaleBas
 	| _ -> recuperer_touche_utilisateur pos;;
 (*Affiche le menu pour choisir entre les differentes options pour recuperer le
 système, à savoir soit via un fichier, soit via l'invite de commandes*)
