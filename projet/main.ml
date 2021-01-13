@@ -52,6 +52,8 @@ let main () =
 		else
 			let a_n = iteration i syst
 			in
+				moveto 250 10;
+				draw_string ("Iteration " ^ string_of_int i);
 				moveto (int_of_float x) (int_of_float y);
 				let l_pos = exec_syst a_n [{x;y;a=0}] syst in
 				let n = recuperer_touche_utilisateur (List.hd l_pos) in
