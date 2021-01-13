@@ -30,7 +30,7 @@ Après cela, si c'est le fichier a un format valide ou que le L-système fourni 
 	* `B` -> décaler l'image de l'itération vers le bas
 	* `Q` -> Ferme la fenêtre et arrête le programme.
 On répète cette opération jusqu'à que l'utilisateur tape `Q`. Avant de s'arrêter, le programme écrit un message d'au revoir sur le terminal.
- 
+
 ### Découpage modulaire
 
 Le projet contient de nombreux modules dont nous allons vous préciser l'utilité:
@@ -41,11 +41,11 @@ Le projet contient de nombreux modules dont nous allons vous préciser l'utilit�
 
 ### Répartition du travail
 
- Pour ce projet, on a réfléchi tous les deux sur la partie lecture d'un L-Système à partir d'un fichier ou du terminal. La partie sur les L-systèmes a été réalisée par Harris, tout comme la partie Turtle ou encore celle sur la partie plus graphique du projet.  
+ Pour ce projet, on a réfléchi tous les deux sur la partie lecture d'un L-Système à partir d'un fichier ou du terminal. La partie sur les L-systèmes,à proprement parlé, a été réalisée par Harris, tout comme la partie Turtle ou encore celle sur la partie plus graphique du projet.  
 
  En ce qui concerne la chronologie du travail sur ce projet, on peut mettre en évidence 2 phases :
  * Le mois de novembre et début décembre
  * Début janvier.
 
 Le "reconfinement" de novembre nous a permis de découvrir le sujet et de nous familiariser avec les L-systèmes, les tortues et autres concepts explorés dans ce projet.
-Puis, après un mois de décembre rempli de révisions pour les examens, de Devoirs Maison ou encore de projets à rendre, on s'est remis au travail au début du mois de janvier, une fois ces tempêtes passées. On a pu alors s'attaquer à la lecture des fichiers, afin de récupérer les L-Systèmes de l'utilisateur et d'interpréter à la volée les L-Systèmes. De plus, l'affichage a été corrigée, afin d'être plus lisible, et gérée par l'utilisateur.
+Puis, après un mois de décembre rempli de révisions pour les examens, de Devoirs Maison ou encore de projets à rendre, on s'est remis au travail au début du mois de janvier, une fois ces tempêtes passées. On a pu alors s'attaquer à la lecture des fichiers et du terminal, afin de récupérer les L-Systèmes de l'utilisateur et d'interpréter à la volée les L-Systèmes. De plus, l'affichage a été corrigée, afin d'être plus lisible, et gérée par l'utilisateur.
