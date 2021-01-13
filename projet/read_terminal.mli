@@ -1,6 +1,11 @@
 open Systems
 open Turtle
-(*Type indiquant le choix de l'utilisateur par rapport au L-systeme courant*)
+(*Type indiquant le choix de l'utilisateur par rapport au L-systeme courant :
+Avancer -> Avancer d'une iteration
+Reculer -> Reculer d'une iteration
+ZoomAvant -> Agrandir la representation du L-système
+ZoomArriere -> Réduit la taille de la representation du L-système 
+Quitter -> Quitte le programme *)
 type action =
 	Avancer | Reculer | ZoomAvant | ZoomArriere | Quitter;;
 val recuperer_touche_utilisateur : position -> action

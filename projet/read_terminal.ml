@@ -6,6 +6,7 @@ type action =
 (*Demande le nom du fichier que l'utilisateur souhaite ouvrir et renvoie le
 Lsysteme correspondant*)
 let rec recup_syst_fich () =
+	print_string "Indiquez le chemin du fichier qui contient le L-system voulu\n";
  	let str = read_line() in
 		try
 			from_fich_to_syst str
