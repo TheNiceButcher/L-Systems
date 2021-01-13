@@ -22,6 +22,15 @@ let cmdline_options = [
 
 let extra_arg_action = fun s -> failwith ("Argument inconnu :"^s)
 
+let reduire_syst syst op =
+	let new_inter = fun x ->
+		match (List.hd (syst.interp x)) with
+		| Line n -> [Line (op n 2)]
+		| Move n -> [Move (op n 2)]
+		| _ -> syst.interp x
+	in
+	{syst with interp = new_inter}
+
 let main () =
   Arg.parse cmdline_options extra_arg_action usage;
 	let sys = menu_bienvenue () in
@@ -31,18 +40,18 @@ let main () =
 		if (i = -1) then
 		begin clear_graph(); close_graph(); end
 		else
-			let a_n = iteration i sys
+			let a_n = iteration i syst
 			in
 				moveto 200 200;
-				let l_pos = exec_syst a_n [{x=200.;y=200.;a=0}] sys in
+				let l_pos = exec_syst a_n [{x=200.;y=200.;a=0}] syst in
 				let n = recuperer_touche_utilisateur (List.hd l_pos) in
 				match n with
 				| Avancer -> clear_graph();loop (i+1) syst
 				(*Si on veut reculer, il faut que i > 0*)
 				| Reculer when i <> 0 -> clear_graph();loop (i-1) syst
 				| Reculer -> loop 0 syst
-				| ZoomAvant -> loop i syst
-				| ZoomArriere -> loop i syst
+				| ZoomAvant -> clear_graph();loop i (reduire_syst syst ( * ))
+				| ZoomArriere -> clear_graph();loop i (reduire_syst syst ( / ))
 				| Quitter -> loop (-1) syst
 	in
 		loop 0 sys;
