@@ -64,34 +64,53 @@ let rec from_string_to_word s =
  		| Some b1 ->
 			let b2 = String.rindex s ']' in
 			let len = String.length s in
+				(*Si la chaine commence et finit par des [], on rappelle juste la fonction*)
 				if (b1 = 0 && b2 = len - 1)
 				then
-					Branch (from_string_to_word (String.sub s 1 (b2-1)))
+					let w_in_branch = String.sub s 1 (b2-1) in
+					let has_sub_branch = String.index_opt w_in_branch ']' in
+
+					match has_sub_branch with
+					| None -> Branch (from_string_to_word w_in_branch)
+					| Some sb ->
+						let s1,s2 = String.sub s 0 (sb+2),String.sub s (sb+2) (len - sb - 2) in
+						let w1,w2 = from_string_to_word s1,from_string_to_word s2 in
+						match w2 with
+						| Branch _ -> Seq [w1;w2]
+						| Seq l -> Seq (w1::l)
+						| _ -> failwith "Ne peut pas arriver"
+				(*Sinon, si la chaine ne commence pas par [ et ne finit pas par ]*)
 				else if (b1 <> 0 && b2 <> len - 1)
 				then
 					let w1 = (from_string_to_word (String.sub s 0 (b1))) in
 					let w2 = (from_string_to_word (String.sub s b1 (b2 - b1 + 1))) in
-					let w3 = (from_string_to_word (String.sub s (b2+1) (len - b2 -1))) in
+					let w3 = (from_string_to_word (String.sub s (b2+1) (len - b2 - 1))) in
 					match w1,w3 with
 					| Symb _, Symb _ -> Seq [w1;w2;w3]
 					| Symb _, Seq l -> Seq ([w1;w2] @ l)
 					| Seq l, Symb _ -> Seq (l @ [w2;w3])
 					| Seq l1,Seq l2 -> Seq (l1 @ (w2::l2))
 					| _,_ -> failwith "Impossible"
+				(*Le mot commence par une branche et finit par autre chose*)
 				else if (b1 = 0)
 				then
 					let w1 = (from_string_to_word (String.sub s 0 (b2+1))) in
 					let w2 = (from_string_to_word (String.sub s (b2 + 1) (len - b2 - 1))) in
-					match w2 with
-					| Symb _ -> Seq [w1;w2]
-					| Seq l -> Seq (w1::l)
+					match w1,w2 with
+					| Seq l,Symb _ -> Seq (l @ [w2])
+					| _, Symb _ -> Seq [w1;w2]
+					| Seq l1,Seq l2 -> Seq (l1 @ l2)
+					| _, Seq l -> Seq (w1::l)
 					| _ -> failwith "Impossible"
+				(*Le mot ne commence pas mais finit sur une branche*)
 				else
 					let w1 = (from_string_to_word (String.sub s 0 (b1))) in
 					let w2 = (from_string_to_word (String.sub s (b1) (len - b1))) in
-					match w1 with
-					| Symb _ -> Seq [w1;w2]
-					| Seq l -> Seq (l @ [w2])
+					match w1,w2 with
+					| Symb _,Seq l -> Seq (w1::l)
+					| Symb _,_ -> Seq [w1;w2]
+					| Seq l1, Seq l2 -> Seq (l1 @ l2)
+					| Seq l, _ -> Seq (l @ [w2])
 					| _ -> failwith "Impossible"
 (*Renvoie la commande correspondante a la chaine de caractere s*)
 let from_string_to_command s =
