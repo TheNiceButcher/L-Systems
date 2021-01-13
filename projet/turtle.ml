@@ -35,9 +35,7 @@ let t_pos_to_pos pos n =
 	((pos.x +. float_of_int n *. (cos angle)),
 	(pos.y +. float_of_int n *. (sin angle)))
 (*Fonction qui renvoie la fonction graphique à faire selon si la commande
-est Line ou Move.
-Cette fonction permet de traiter dans le match de exec_turtle ces deux cas de commandes
-en meme temps*)
+est Line ou Move.*)
 let line_or_move cmd =
  	match cmd with
 	| Line _ -> lineto

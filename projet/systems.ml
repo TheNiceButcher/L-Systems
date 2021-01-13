@@ -52,6 +52,7 @@ let rec next lsyst a =
 		| Foret (l) ->
 				Node(Foret (List.map (fun n -> next lsyst n) l), s)
 		end
+(*Renvoie la n-ième itération du lsysteme en argument*)
 let iteration n lsyst =
 	let arbre = arbre_ax lsyst in
 		let rec loop n t =
@@ -72,18 +73,17 @@ let exec_cmd cmd l_pos =
 	let pos = List.hd l_pos in
 		let pos_int = t_pos_to_pos pos 0
 		in
-			match cmd with
-			| Move n | Line n ->
-				let new_pos = t_pos_to_pos pos n in
-					let new_pos_int = int_int_of_float_float new_pos in
-						(line_or_move cmd) (fst new_pos_int) (snd new_pos_int);
-						(pos_to_t_pos new_pos pos.a)::(List.tl l_pos)
-			| Turn a ->
-				((pos_to_t_pos pos_int (pos.a + a))::(List.tl l_pos))
-			| Store ->
-				(pos_to_t_pos pos_int pos.a)::l_pos
-			| Restore ->
-				List.tl l_pos
+		match cmd with
+		| Move n | Line n ->
+			let new_pos = t_pos_to_pos pos n in
+				let new_pos_int = int_int_of_float_float new_pos in
+					(line_or_move cmd) (fst new_pos_int) (snd new_pos_int);
+					(pos_to_t_pos new_pos pos.a)::(List.tl l_pos)
+		| Turn a ->
+			((pos_to_t_pos pos_int (pos.a + a))::(List.tl l_pos))
+		| Store ->
+			(pos_to_t_pos pos_int pos.a)::l_pos
+		| Restore -> List.tl l_pos
 (*Execute les commandes relatives a l'arbre en argument*)
 let rec exec_syst a pos lsyst =
 	match a with
