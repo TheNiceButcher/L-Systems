@@ -68,8 +68,8 @@ let rec recuperer_syst_read () =
 	let ru = loop 0 [] in
 	print_string "Donnez les interprétations du Lsystems (tapez '-1' quand vous avez fini)\n";
 	print_string "Elles doivent etre de la forme :\n";
-	print_string "s cmd ou s est le symbole que vous souhaitez a cmd, qui peut être :\n"
-	print_string "Tn pour Turn n,Mn pour Move n ou Ln pour Turn n avec n entier"
+	print_string "s cmd ou s est le symbole que vous souhaitez a cmd, qui peut être :\n";
+	print_string "Tn pour Turn n,Mn pour Move n ou Ln pour Turn n avec n entier\n";
 	let inter = loop 0 [] in
 		creation_fich ax ru inter;
 		try
@@ -125,7 +125,7 @@ let main () =
 			let a_n = iteration i sys
 			in
 				moveto 200 200;
-				let l_pos = exec a_n [{x=200.;y=200.;a=0}] sys in
+				let l_pos = exec_syst a_n [{x=200.;y=200.;a=0}] sys in
 				let n = recuperer_touche_utilisateur (List.hd l_pos) in
 				match n with
 				| 1 -> clear_graph();loop (i+1)

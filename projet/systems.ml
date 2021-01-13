@@ -83,7 +83,7 @@ let exec_cmd cmd l_pos =
 			| Store ->
 				(pos_to_t_pos pos_int pos.a)::l_pos
 			| Restore ->
-				(pos_to_t_pos pos_int pos.a)::l_pos
+				List.tl l_pos
 (*Execute les commandes relatives a l'arbre en argument*)
 let rec exec_syst a pos lsyst =
 	match a with
