@@ -43,13 +43,14 @@ let creation_fich ax ru inter =
 		loop ru;
 		loop inter;
 		close_out fich;;
-(*Recupere un Lsyteme donne par l'utilisateur via la ligne de commande*)
+(*Recupere un Lsyteme donne par l'utilisateur via la ligne de commande
+Cette fonction se relance si le Lsysteme fourni n'est pas valide*)
 let rec recuperer_syst_read () =
 	print_string "Donnez l'axiome de votre Lsystems :\n";
 	let ax = read_line() in
 	print_string "Donnez les regles du Lsystems (tapez '-1' quand vous avez fini)\n";
 	print_string "Elles doivent etre sous la forme :\n";
-	print_string "'s w' où s est le symbole dont w est la substitution de s\n";
+	print_string "'s w où s est le symbole dont w est la substitution de s\n";
 	let rec loop i acc =
 		if (i = (-1)) then List.rev acc
 		else
@@ -66,6 +67,9 @@ let rec recuperer_syst_read () =
 	in
 	let ru = loop 0 [] in
 	print_string "Donnez les interprétations du Lsystems (tapez '-1' quand vous avez fini)\n";
+	print_string "Elles doivent etre de la forme :\n";
+	print_string "s cmd ou s est le symbole que vous souhaitez a cmd, qui peut être :\n"
+	print_string "Tn pour Turn n,Mn pour Move n ou Ln pour Turn n avec n entier"
 	let inter = loop 0 [] in
 		creation_fich ax ru inter;
 		try
@@ -77,7 +81,9 @@ let rec recuperer_syst_read () =
 		end;;
 
 
-(*Récupere la touche presse par l'utilisateur, avec en argument la dernière position*)
+(*Récupere la touche presse par l'utilisateur, avec en argument la dernière position.
+Si cette touche est different de 'a', 'r', ou 'q', on rappelle la fonction jusqu'a
+que l'une de ses touches soit tapee par l'utilisateur*)
 let rec recuperer_touche_utilisateur pos =
 	let pos_int = int_int_of_float_float (t_pos_to_pos pos 0) in
 	moveto 100 100;
@@ -90,6 +96,8 @@ let rec recuperer_touche_utilisateur pos =
 	| 'R' | 'r' -> moveto (fst pos_int) (snd pos_int);2
 	| 'Q' | 'q' -> moveto (fst pos_int) (snd pos_int);-1
 	| _ -> recuperer_touche_utilisateur pos;;
+(*Affiche le menu pour choisir entre les differentes options pour recuperer le
+système, à savoir soit via un fichier, soit via l'invite de commandes*)
 let rec menu_bienvenue () =
 	print_string ("Bienvenue\n"
 	^ "A partir de quel source voulez-vous fourni le L-Systeme ?\n" ^
@@ -117,7 +125,7 @@ let main () =
 			let a_n = iteration i sys
 			in
 				moveto 200 200;
-				let l_pos = exec_syst a_n [{x=200.;y=200.;a=0}] sys in
+				let l_pos = exec a_n [{x=200.;y=200.;a=0}] sys in
 				let n = recuperer_touche_utilisateur (List.hd l_pos) in
 				match n with
 				| 1 -> clear_graph();loop (i+1)
