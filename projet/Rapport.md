@@ -11,6 +11,7 @@ Les fonctionnalités implémentées sont les suivantes :
 - Interprétation à la volée
 - Possibilité d'agrandir / réduire la représentation du L-système à l'aide des touches "+" et "-".
 - Possibilité de déplacer l'image vers le haut(H),vers le bas(B), vers la gauche(G) et vers la droite(D).
+En somme, presque tout le sujet minimal a été traité, mis à part le calcul des bornes automatiques.
 
 
 ### Compilation et exécution
@@ -29,6 +30,7 @@ Après cela, si c'est le fichier a un format valide ou que le L-système fourni 
 	* `H` -> décaler l'image de l'itération vers le haut
 	* `B` -> décaler l'image de l'itération vers le bas
 	* `Q` -> Ferme la fenêtre et arrête le programme.
+
 On répète cette opération jusqu'à que l'utilisateur tape `Q`. Avant de s'arrêter, le programme écrit un message d'au revoir sur le terminal.
 
 ### Découpage modulaire
