@@ -68,23 +68,31 @@ let exec s l_pos lsyst =
 	| "[" -> Store
 	| "]" -> Restore
 	| _ -> List.hd (lsyst.interp s);;
-(*Exécute la commande cmd a la position renseignee dans l_pos*)
+(*Exécute la commande cmd a la position renseignee dans le premier element
+dans l_pos et renvoie la nouvelle liste de position*)
 let exec_cmd cmd l_pos =
 	let pos = List.hd l_pos in
 		let pos_int = t_pos_to_pos pos 0
 		in
 		match cmd with
+		(* Si la commande est Move ou Line, on l'exécute, puis on remplace la
+		tete de la liste par la nouvelle position courante*)
 		| Move n | Line n ->
 			let new_pos = t_pos_to_pos pos n in
 				let new_pos_int = int_int_of_float_float new_pos in
 					(line_or_move cmd) (fst new_pos_int) (snd new_pos_int);
 					(pos_to_t_pos new_pos pos.a)::(List.tl l_pos)
+		(* Si la commande est Turn, on remplace le premier element de l_pos
+		par le premier element avec l'angle renseigne*)
 		| Turn a ->
 			((pos_to_t_pos pos_int (pos.a + a))::(List.tl l_pos))
 		| Store ->
+		(*Si la commande est Store, on ajoute la position courante a la liste*)
 			(pos_to_t_pos pos_int pos.a)::l_pos
+		(*Si la commande est Restore, on renvoie la liste sans sa tete*)
 		| Restore -> List.tl l_pos
-(*Execute les commandes relatives a l'arbre en argument*)
+(*Execute les commandes relatives a l'arbre en argument et aux positions
+de la liste l_pos et renvoie la liste des positions stockées*)
 let rec exec_syst a pos lsyst =
 	match a with
 	| Node(Foret([]),s) ->
