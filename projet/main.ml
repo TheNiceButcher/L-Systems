@@ -114,10 +114,10 @@ let main () =
 		if (i = -1) then
 		begin clear_graph(); close_graph(); end
 		else
-			let a_n = iteration_bis i sys
+			let a_n = iteration i sys
 			in
 				moveto 200 200;
-				let l_pos = exec_bis a_n [{x=200.;y=200.;a=0}] sys in
+				let l_pos = exec_syst a_n [{x=200.;y=200.;a=0}] sys in
 				let n = recuperer_touche_utilisateur (List.hd l_pos) in
 				match n with
 				| 1 -> clear_graph();loop (i+1)
